@@ -17,8 +17,8 @@ export default defineConfig({
       short_name: "Astro",
       description: "Here is your app description",
       start_url: "/",
-      theme_color: "#3367D6",
-      background_color: "#3367D6",
+      theme_color: "#fefefe",
+      background_color: "#fefefe",
       display: "standalone",
       config: {
         icon: "src/assets/images/apple-touch-icon.png",
