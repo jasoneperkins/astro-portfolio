@@ -3,8 +3,23 @@ import {defineConfig} from "astro/config"
 import AstroPWA from "@vite-pwa/astro"
 import sitemap from "@astrojs/sitemap"
 
+import webmanifest from "astro-webmanifest"
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://jasoneperkins.com",
-  integrations: [AstroPWA(), sitemap()],
+  integrations: [
+    AstroPWA(),
+    sitemap(),
+    webmanifest({
+      name: "AstroCorp",
+      icon: "src/assets/icons/favicon.svg",
+      short_name: "Astro",
+      description: "Here is your app description",
+      start_url: "/",
+      theme_color: "#3367D6",
+      background_color: "#3367D6",
+      display: "standalone",
+    }),
+  ],
 })
