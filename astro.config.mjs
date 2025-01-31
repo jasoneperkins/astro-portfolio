@@ -1,11 +1,11 @@
 // @ts-check
 import {defineConfig} from "astro/config"
+
 import AstroPWA from "@vite-pwa/astro"
-import sitemap from "@astrojs/sitemap"
-
-import webmanifest from "astro-webmanifest"
-
 import netlify from "@astrojs/netlify"
+import sitemap from "@astrojs/sitemap"
+import tailwindcss from "@tailwindcss/vite"
+import webmanifest from "astro-webmanifest"
 
 // https://astro.build/config
 export default defineConfig({
@@ -29,4 +29,7 @@ export default defineConfig({
     }),
   ],
   adapter: netlify(),
+  vite: {
+    plugins: [tailwindcss()],
+  },
 })

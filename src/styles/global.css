@@ -1,3 +1,5 @@
-/* Base */
+@import "tailwindcss";
 
-@import "base/typography.css";
+@theme {
+  --font-display: 'Outfit Variable', sans-serif;
+}

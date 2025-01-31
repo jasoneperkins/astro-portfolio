@@ -4,6 +4,7 @@ import PageFooter from "@components/PageFooter.astro"
 import PageHeader from "@components/PageHeader.astro"
 
 import "@fontsource-variable/outfit"
+import "@styles/global.css"
 
 const {title, description, coverImage} = Astro.props
 ---
@@ -11,7 +12,7 @@ const {title, description, coverImage} = Astro.props
 <!doctype html>
 <html lang="en">
   <BaseHead {title} {description} {coverImage} />
-  <body>
+  <body class="grid grid-rows-[auto_1fr_auto] min-h-screen font-display">
     <PageHeader />
     <main>
       <slot />
@@ -19,17 +20,3 @@ const {title, description, coverImage} = Astro.props
     <PageFooter />
   </body>
 </html>
-
-<style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  body {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-  }
-</style>
