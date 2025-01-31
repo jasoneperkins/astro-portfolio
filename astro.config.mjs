@@ -26,4 +26,7 @@ export default defineConfig({
       },
     }),
   ],
+  redirects: {
+    "/astro/corporate": "https://jep-astro-corporate.netlify.app/",
+  },
 })
