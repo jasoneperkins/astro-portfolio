@@ -1,11 +1,47 @@
 ---
+import {SEO} from "astro-seo"
 import "@styles/global.css"
+
+const {title, description, coverImage} = Astro.props
 ---
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="generator" content={Astro.generator} />
-  <title>Astro Basics</title>
+
+  <SEO
+    title={title}
+    description={description}
+    openGraph={{
+      basic: {
+        title: title,
+        type: "article",
+        image: coverImage,
+      },
+    }}
+    twitter={{
+      creator: "@jonasmerlins1",
+    }}
+    extend={{
+      // extending the default link tags
+      link: [{rel: "icon", href: "/favicon.svg"}],
+      // extending the default meta tags
+      meta: [
+        {
+          name: "twitter:image",
+          content: "https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png",
+        },
+        {name: "twitter:title", content: "Tinker Tailor Soldier Spy"},
+        {name: "twitter:description", content: "Agent"},
+      ],
+    }}
+  />
+
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icon.png" />
+
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#fafafa" />
 </head>

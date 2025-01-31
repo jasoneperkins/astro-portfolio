@@ -2,11 +2,15 @@
 import BaseHead from "@components/BaseHead.astro"
 import PageFooter from "@components/PageFooter.astro"
 import PageHeader from "@components/PageHeader.astro"
+
+import "@fontsource-variable/outfit"
+
+const {title, description, coverImage} = Astro.props
 ---
 
 <!doctype html>
 <html lang="en">
-  <BaseHead />
+  <BaseHead {title} {description} {coverImage} />
   <body style="display: grid; grid-template-rows: auto 1fr auto;">
     <PageHeader />
     <main>

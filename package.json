@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.2.1"
+    "@fontsource-variable/outfit": "^5.1.1",
+    "astro": "^5.2.1",
+    "astro-seo": "^0.8.4"
   }
 }
