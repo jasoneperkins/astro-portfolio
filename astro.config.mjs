@@ -5,9 +5,12 @@ import sitemap from "@astrojs/sitemap"
 
 import webmanifest from "astro-webmanifest"
 
+import netlify from "@astrojs/netlify";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://jasoneperkins.com",
+
   integrations: [
     AstroPWA(),
     sitemap(),
@@ -26,4 +29,6 @@ export default defineConfig({
       },
     }),
   ],
+
+  adapter: netlify(),
 })
