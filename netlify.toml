@@ -1,0 +1,6 @@
+[[redirects]]
+  from = "/astro/corporate"
+  to = "https://jep-astro-corporate.netlify.app/"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
