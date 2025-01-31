@@ -20,6 +20,10 @@ export default defineConfig({
       theme_color: "#3367D6",
       background_color: "#3367D6",
       display: "standalone",
+      config: {
+        icon: "src/assets/images/apple-touch-icon.png",
+        insertAppleTouchLinks: true,
+      },
     }),
   ],
 })
