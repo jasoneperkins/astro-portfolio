@@ -9,7 +9,7 @@ import netlify from "@astrojs/netlify"
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://jasoneperkins.com",
+  site: "https://www.jasoneperkins.com",
   integrations: [
     AstroPWA(),
     sitemap(),
