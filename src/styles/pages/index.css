@@ -31,10 +31,10 @@ h1 {
   margin-top: 0.25em;
 }
 
-#links {
+/* #links {
   display: flex;
   gap: 16px;
-}
+} */
 
 #links a {
   display: flex;

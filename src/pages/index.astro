@@ -3,7 +3,6 @@ import Layout from "@layouts/Base.astro"
 
 import astroLogo from "@icons/astro.svg"
 import background from "@icons/background.svg"
-import "@styles/pages/index.css"
 
 const title = "Homepage"
 const description = "Welcome to the Astro Basics homepage"
@@ -12,13 +11,13 @@ const coverImage = "@images/business-integrity.webp"
 
 <Layout {title} {description} {coverImage}>
   <section style="overflow:visible">
-    <img id="background" src={background.src} alt="" fetchpriority="high" />
+    <!-- <img id="background" src={background.src} alt="" fetchpriority="high" /> -->
     <a href="https://www.jasoneperkins.com/astro/corporate"><img src={astroLogo.src} width="115" height="48" alt="Astro Homepage" /></a>
     <h1 class="text-red-500">
       To get started, open the <code>src/pages</code> directory in your project.
     </h1>
   </section>
-  <section id="links">
+  <section id="links" class="grid grid-cols-(--split)">
     <a class="button" href="/astro/corporate">Read our docs</a>
     <a href="/astro/corporate/">
       Join our Discord <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36" focusable="false" tabindex="0">
