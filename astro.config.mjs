@@ -7,11 +7,14 @@ import sitemap from "@astrojs/sitemap"
 import tailwindcss from "@tailwindcss/vite"
 import webmanifest from "astro-webmanifest"
 
+import icon from "astro-icon"
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://www.jasoneperkins.com",
+  adapter: netlify(),
   integrations: [
     AstroPWA(),
+    icon(),
     sitemap(),
     webmanifest({
       name: "AstroCorp",
@@ -28,8 +31,8 @@ export default defineConfig({
       },
     }),
   ],
-  adapter: netlify(),
   output: "server",
+  site: "https://www.jasoneperkins.com",
   vite: {
     plugins: [tailwindcss()],
   },

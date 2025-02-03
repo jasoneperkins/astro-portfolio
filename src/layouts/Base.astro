@@ -7,13 +7,14 @@ import "@fontsource-variable/outfit"
 import "@styles/global.css"
 
 const theme = Astro.cookies.get("theme")?.value
+
 const {title, description, coverImage} = Astro.props
 ---
 
 <!doctype html>
-<html lang="en" dark-theme={theme}>
+<html lang="en" data-theme={theme}>
   <BaseHead {title} {description} {coverImage} />
-  <body class="grid grid-rows-[auto_1fr_auto] min-h-screen bg-white dark:bg-gray-900 font-display">
+  <body class="grid grid-rows-[auto_1fr_auto] min-h-screen font-display">
     <PageHeader />
     <main>
       <slot />

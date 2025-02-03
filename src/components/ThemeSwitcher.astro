@@ -1,66 +1,53 @@
 ---
+import {Astro} from "astro"
+import {Icon} from "astro-icon/components"
+
 let theme: string | undefined = Astro.cookies.get("theme")?.value
 ---
 
-<label class="inline-flex items-center cursor-pointer">
-  <input type="checkbox" id="themeToggle" name="themeToggle" value="" class="sr-only" />
-  <label for="themeToggle">
-    <svg
-      class="shrink-0 size-4 block dark:hidden"
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      aria-label="Switch to dark theme">
-      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-    </svg>
-    <svg
-      class="shrink-0 size-4 text-white hidden dark:block"
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      aria-label="Switch to light theme">
-      <circle cx="12" cy="12" r="4"></circle>
-      <path d="M12 2v2"></path>
-      <path d="M12 20v2"></path>
-      <path d="m4.93 4.93 1.41 1.41"></path>
-      <path d="m17.66 17.66 1.41 1.41"></path>
-      <path d="M2 12h2"></path>
-      <path d="M20 12h2"></path>
-      <path d="m6.34 17.66-1.41 1.41"></path>
-      <path d="m19.07 4.93-1.41 1.41"></path>
-    </svg>
-  </label>
-  <!-- <div
-    class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600">
-  </div> -->
+<label class="inline-flex items-center cursor-pointer p-2 rounded-full">
+  <input type="checkbox" id="themeToggle" name="themeToggle" checked={theme === "dark"} class="peer sr-only" />
+  <Icon name="mdi:white-balance-sunny" class="size-6 text-white hidden peer-checked:block" aria-label="Set the site theme to light" />
+  <Icon name="mdi:moon-waning-crescent" class="size-6 text-gray-900 block peer-checked:hidden" aria-label="Set the site theme to dark" />
 </label>
 
-<script>
+<script is:inline>
   const toggle = document.querySelector("#themeToggle")
 
-  toggle?.addEventListener("change", ({target: {checked}}) => {
-    let theme = checked ? "light" : "dark"
-    setThemeUser(theme)
-    setThemeSite(theme)
-  })
+  toggle?.addEventListener("change", e => getThemeToggle(e))
 
-  function setThemeUser(theme) {
-    localStorage.setItem("theme", theme)
+  const getThemeToggle = e => {
+    let theme = e.target.checked ? "dark" : "light"
+    setThemeCookie(theme)
+    setThemeSite(theme)
+  }
+
+  const getThemePrefer = () => (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+
+  function getThemeCookie() {
+    const value = `; ${document.cookie}`
+    const parts = value.split(`; theme=`)
+    if (parts.length === 2) return parts.pop().split(";").shift()
+  }
+
+  function setThemeToggle(theme) {
+    toggle.checked = theme === "dark"
+  }
+
+  function setThemeCookie(theme) {
+    document.cookie = `theme=${theme}`
   }
 
   function setThemeSite(theme) {
+    document.documentElement.style.colorScheme = theme
     document.documentElement.setAttribute("data-theme", theme)
+  }
+
+  window.onload = () => {
+    const themePreferDark = getThemePrefer() === "dark"
+    const themeCookieDark = getThemeCookie() === "dark"
+    const theme = themePreferDark || themeCookieDark ? "dark" : "light"
+    setThemeToggle(theme)
+    setThemeSite(theme)
   }
 </script>
