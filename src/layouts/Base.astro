@@ -8,7 +8,7 @@ import "@styles/global.css"
 
 const theme = Astro.cookies.get("theme")?.value
 
-const {title, description, coverImage} = Astro.props
+const {title, description, coverImage, class: classMain} = Astro.props
 ---
 
 <!doctype html>
@@ -16,7 +16,7 @@ const {title, description, coverImage} = Astro.props
   <BaseHead {title} {description} {coverImage} />
   <body class="grid grid-rows-[auto_1fr_auto] min-h-screen font-display">
     <PageHeader />
-    <main>
+    <main class={classMain}>
       <slot />
     </main>
     <PageFooter />

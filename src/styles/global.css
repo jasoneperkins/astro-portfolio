@@ -5,6 +5,17 @@
 @theme {
   --font-display: 'Outfit Variable', sans-serif;
   --text-14: 0.875rem;
+
+  --content-width-max: 70.5rem;
+  --content-width: min(100%, var(--content-width-max));
+  --aside-width: min(24rem, calc(0.3 * var(--content-width)));
+  --content-gap: clamp(0.5rem, -0.9445rem + 6.1633vw, 3rem);
+  --breakout-width: 3rem;
+  --grid-points: 7;
+
+  /* split: `[edge-start] auto [wide-start] minmax(0, var(--breakout-width)) [content-start] calc(min(100%, var(--content-width)) / 2 - ((var(--grid-points) - 2) / 2) * var(--content-gap)) [center] calc(min(100%, var(--content-width)) / 2 - ((var(--grid-points) - 2) / 2) * var(--content-gap)) [content-end] minmax(0, var(--breakout-width)) [wide-end] auto [edge-end]`,
+    aside: `[edge-start] auto [wide-start] minmax(0, var(--breakout-width)) [content-start] calc(min(100%, var(--content-width)) - var(--aside-width) - ((var(--grid-points) - 2) * var(--content-gap))) [center] var(--aside-width) [content-end] minmax(0, var(--breakout-width)) [wide-end] auto [edge-end]`,
+    40: `[edge-start] auto [wide-start] minmax(0, var(--breakout-width)) [content-start] calc(min(100%, var(--content-width)) * 0.4 - ((var(--grid-points) - 2) / 2) * var(--content-gap)) [center] calc(min(100%, var(--content-width)) * 0.6 - ((var(--grid-points) - 2) / 2) * var(--content-gap)) [content-end] minmax(0, var(--breakout-width)) [wide-end] auto [edge-end]`, */
 }
 
 html {
@@ -21,4 +32,81 @@ html {
 
 html[data-theme="dark"] {
   color-scheme: dark;
+}
+
+body {
+  @apply grid min-h-screen w-full;
+  grid-template-rows: min-content auto min-content;
+}
+
+main.split>*,
+:not(main).split {
+  @apply grid;
+  grid-template-columns: [edge-start] auto [wide-start] minmax(0, var(--breakout-width)) [content-start] calc(min(100%, var(--content-width)) / 2 - ((var(--grid-points) - 2) / 2) * var(--content-gap)) [center] calc(min(100%, var(--content-width)) / 2 - ((var(--grid-points) - 2) / 2) * var(--content-gap)) [content-end] minmax(0, var(--breakout-width)) [wide-end] auto [edge-end];
+  column-gap: var(--content-gap);
+
+  >* {
+    @apply col-[content];
+  }
+
+  >.half {
+    @apply lg:col-[content-start_/_center];
+
+    +.half {
+      @apply max-lg:mt-8 lg:col-[center_/_content-end];
+    }
+  }
+}
+
+main.split-40>*,
+:not(main).split-40 {
+  @apply grid;
+  grid-template-columns: [edge-start] auto [wide-start] minmax(0, var(--breakout-width)) [content-start] calc(min(100%, var(--content-width)) * 0.4 - ((var(--grid-points) - 2) / 2) * var(--content-gap)) [center] calc(min(100%, var(--content-width)) * 0.6 - ((var(--grid-points) - 2) / 2) * var(--content-gap)) [content-end] minmax(0, var(--breakout-width)) [wide-end] auto [edge-end];
+  column-gap: var(--content-gap);
+
+  >* {
+    @apply col-[content];
+  }
+
+  >.half {
+    @apply lg:col-[content-start_/_center];
+
+    +.half {
+      @apply max-lg:mt-8 lg:col-[center_/_content-end];
+    }
+  }
+}
+
+main.wide>*,
+:not(main).wide {
+  /* @apply grid grid-cols-split;
+  column-gap: var(--content-gap); */
+
+  >* {
+    @apply col-[wide];
+  }
+
+  >.half {
+    @apply lg:col-[wide-start_/_center];
+
+    +.half {
+      @apply max-lg:mt-8 lg:col-[center_/_wide-end];
+    }
+  }
+}
+
+main.aside,
+:not(main).aside {
+  @apply grid content-start;
+  grid-template-columns: [edge-start] auto [wide-start] minmax(0, var(--breakout-width)) [content-start] calc(min(100%, var(--content-width)) - var(--aside-width) - ((var(--grid-points) - 2) * var(--content-gap))) [center] var(--aside-width) [content-end] minmax(0, var(--breakout-width)) [wide-end] auto [edge-end];
+  /* grid-template-rows: min-content; */
+  column-gap: var(--content-gap);
+
+  >* {
+    @apply col-[content] lg:col-[content-start_/_center];
+  }
+
+  aside {
+    @apply max-lg:mt-8 lg:col-[center_/_content-end] lg:row-[1_/_100];
+  }
 }

@@ -1,0 +1,18 @@
+---
+import ThemeSwitcher from "./ThemeSwitcher.astro"
+---
+
+<nav aria-label="Main Navigation" class="flex justify-between items-center gap-4 py-4">
+  <a href="/" aria-current="page" class="text-4xl font-bold">Logo</a>
+  <ul class="flex justify-between items-center basis-md gap-1">
+    <li><a href="/">Home</a></li>
+    <li><a href="/">Shop</a></li>
+    <li><a href="/">Space Bears</a></li>
+    <li><a href="/">Mars Cars</a></li>
+    <li><a href="/">Contact</a></li>
+  </ul>
+  <div class="flex gap-x-4 items-center">
+    <ThemeSwitcher />
+    <a href="/" aria-current="page">Contact Us</a>
+  </div>
+</nav>
