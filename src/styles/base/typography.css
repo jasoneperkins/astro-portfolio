@@ -1,5 +1,7 @@
-@layer base {
-  body {
-    font-family: 'Outfit Variable', sans-serif;
-  }
+body {
+  font-family: 'Outfit Variable', sans-serif;
+}
+
+h1 {
+  font-size: 3.2rem;
 }

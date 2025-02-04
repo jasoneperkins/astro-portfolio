@@ -4,6 +4,7 @@
 
 @theme {
   --font-display: 'Outfit Variable', sans-serif;
+  --text-14: 0.875rem;
 }
 
 html {

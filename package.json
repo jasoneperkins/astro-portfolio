@@ -14,14 +14,12 @@
     "@fontsource-variable/outfit": "^5.1.1",
     "@fontsource/outfit": "^5.1.1",
     "@iconify-json/mdi": "^1.2.3",
-    "@tailwindcss/postcss": "^4.0.2",
     "@tailwindcss/vite": "^4.0.1",
     "astro": "^5.2.1",
     "astro-icon": "^1.1.5",
     "astro-seo": "^0.8.4",
     "astro-webmanifest": "^1.0.0",
-    "postcss": "^8.5.1",
-    "tailwindcss": "^4.0.2"
+    "tailwindcss": "^4.0.3"
   },
   "devDependencies": {
     "@vite-pwa/astro": "^0.5.0"
