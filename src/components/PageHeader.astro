@@ -1,23 +1,20 @@
 ---
+import HeaderContact from "./HeaderContact.astro"
 import HeaderNavigation from "./HeaderNavigation.astro"
+import HeaderTitle from "./HeaderTitle.astro"
 
-const title = "Jason E Perkins, Web Developer"
+const {title, coverImage = "/assets/images/blog-hero.webp"} = Astro.props
+const backgroundImage = `url(${coverImage})`
 ---
 
-<header class="grid split sticky top-0">
-  <p>{title}</p>
-  <HeaderNavigation />
-</header>
-<hgroup class="grid split">
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam omnis aliquid deserunt cupiditate possimus amet accusantium, eum rem! Vitae alias
-    laudantium debitis. Assumenda cum totam accusantium natus officiis. Atque reiciendis laudantium nihil quasi animi quisquam nostrum rem aliquid
-    quae impedit ratione, molestias fugiat natus eligendi beatae. Possimus neque blanditiis placeat?
-  </p>
-</hgroup>
-
-<style>
+<style define:vars={{backgroundImage}}>
   header {
-    container-type: scroll-state;
+    background-image: var(--backgroundImage);
   }
 </style>
+
+<header class="grid split bg-cover bg-center overlay-gray">
+  <HeaderContact />
+  <HeaderNavigation />
+  <HeaderTitle {title} />
+</header>

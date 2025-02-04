@@ -18,10 +18,13 @@
     40: `[edge-start] auto [wide-start] minmax(0, var(--breakout-width)) [content-start] calc(min(100%, var(--content-width)) * 0.4 - ((var(--grid-points) - 2) / 2) * var(--content-gap)) [center] calc(min(100%, var(--content-width)) * 0.6 - ((var(--grid-points) - 2) / 2) * var(--content-gap)) [content-end] minmax(0, var(--breakout-width)) [wide-end] auto [edge-end]`, */
 }
 
+/* Base */
+
+/* colors */
+
 html {
   color-scheme: light dark;
   color: light-dark(var(--color-gray-800), var(--color-gray-50));
-  background-color: light-dark(var(--color-gray-50), var(--color-gray-900));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,15 +37,7 @@ html[data-theme="dark"] {
   color-scheme: dark;
 }
 
-body {
-  @apply grid min-h-screen w-full;
-  grid-template-rows: min-content auto min-content;
-}
-
-/* Base */
-
-/* colors */
-
+html,
 main {
   background-color: light-dark(var(--color-gray-50), var(--color-gray-900));
 }
@@ -56,7 +51,7 @@ button,
   @apply justify-self-start flex gap-x-1 items-center py-3 px-6 rounded transition duration-200;
   @apply leading-snug font-medium text-14;
   @apply bg-blue-800 dark:bg-cyan-300 text-white dark:text-blue-900 shadow-lg shadow-blue-800/50;
-  @apply hover:no-underline focus:no-underline hover:bg-blue-900 focus:bg-blue-900 dark:hover:bg-cyan-500 dark:focus:bg-cyan-500;
+  @apply hover:no-underline focus:no-underline hover:bg-blue-900 focus:bg-blue-900 dark:hover:bg-cyan-500 dark:focus:bg-cyan-500 hover:outline-2 focus:outline-2;
 
   &.btn-blue-cyan {
     @apply bg-gradient-to-r from-[#234FBE] to-cyan-600 shadow-cyan-800/50;
@@ -78,9 +73,138 @@ button,
   }
 }
 
+/* overlays */
+
+.overlay-blue {
+  border-image: fill 1 linear-gradient(to right, theme("colors.blue.900/80%") 30%, theme("colors.blue.900/20%") 100%);
+}
+
+.overlay-blue-cyan {
+  border-image: fill 1 linear-gradient(to right, theme("colors.blue.900/80%") 30%, theme("colors.cyan.700/90%") 100%);
+}
+
+.overlay-gray {
+  border-image: fill 1 linear-gradient(to bottom, theme("colors.gray.900/90%") 30%, theme("colors.gray.900/70%") 100%);
+}
+
+.overlay-white {
+  border-image: fill 1 linear-gradient(to right, theme("colors.white/80%") 30%, theme("colors.white/50%") 100%);
+}
+
+.overlay-sf {
+  border-image: fill 1 linear-gradient(to right, theme("colors.blue.700/80%") 40%, theme("colors.white/50%") 40%);
+}
+
+/* typography */
+
+html {
+  font-size: 18px;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+}
+
+h1 {
+  @apply leading-none font-bold;
+  /* font-size: 2.986rem; */
+  font-size: clamp(1.476rem, 0.604rem + 3.723vw, 2.986rem);
+}
+
+h2 {
+  /* font-size: 1.383rem; */
+  font-size: clamp(1.383rem, 0.745rem + 2.724vw, 2.488rem);
+}
+
+aside h2 {
+  @apply text-lg mb-6;
+}
+
+h3 {
+  /* font-size: 1.296rem; */
+  font-size: clamp(1.296rem, 0.846rem + 1.918vw, 2.074rem);
+}
+
+h4 {
+  /* font-size: 1.215rem; */
+  font-size: clamp(1.215rem, 0.919rem + 1.265vw, 1.728rem);
+}
+
+h5 {
+  /* font-size: 1.138rem; */
+  font-size: clamp(1.138rem, 0.964rem + 0.745vw, 1.44rem);
+}
+
+h6 {
+  /* font-size: 1.067rem; */
+  font-size: clamp(1.067rem, 0.99rem + 0.328vw, 1.2rem);
+}
+
+p {
+  font-size: 1rem;
+}
+
+hgroup p {
+  @apply mb-0 flex items-center gap-2 text-14 font-extralight uppercase before:block before:w-6 before:border-t-2 before:border-t-cyan-700 dark:before:border-t-cyan-300 before:content-[""];
+}
+
+.small {
+  font-size: 0.937rem;
+}
+
+.tiny {
+  font-size: 0.694rem;
+}
+
+a {
+  @apply focus-within:underline hover:underline;
+}
+
+h1,
+:not(hgroup)>p:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply leading-none;
+  margin-bottom: 0.5em;
+  font-weight: 500;
+}
+
+main.aside {
+  ul:not(:has(article)) {
+    @apply my-2 ps-5 list-disc;
+  }
+
+  aside ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.text-blue-cyan {
+  background-image: linear-gradient(45deg, light-dark(theme("colors.blue.900"), theme("colors.blue.400")), light-dark(theme("colors.cyan.500"),
+        theme("colors.cyan.200")));
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
 /* Layouts */
 
 /* grid */
+
+body {
+  @apply grid min-h-screen w-full;
+  grid-template-rows: min-content auto min-content;
+}
 
 main.split>*,
 :not(main).split {

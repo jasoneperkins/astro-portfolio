@@ -4,10 +4,10 @@ import {Icon} from "astro-icon/components"
 let theme: string | undefined = Astro.cookies.get("theme")?.value
 ---
 
-<label class="btn btn-transparent inline-flex items-center cursor-pointer !p-2 !rounded-full focus:backdrop-blur-md focus:bg-white">
+<label class="btn btn-transparent inline-flex items-center cursor-pointer !p-2 !rounded-full focus:backdrop-blur-md focus:bg-white -rotate-45">
   <input type="checkbox" id="themeToggle" name="themeToggle" checked={theme === "dark"} class="peer sr-only" />
-  <Icon name="mdi:white-balance-sunny" class="size-6 text-white hidden peer-checked:block" aria-label="Set the site theme to light" />
-  <Icon name="mdi:moon-waning-crescent" class="size-6 text-gray-900 block peer-checked:hidden" aria-label="Set the site theme to dark" />
+  <Icon name="mdi:white-balance-sunny" class="hidden peer-checked:block size-4" aria-label="Set the site theme to light" />
+  <Icon name="mdi:moon-waning-crescent" class="block size-4 peer-checked:hidden" aria-label="Set the site theme to dark" />
 </label>
 
 <script is:inline>

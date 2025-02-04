@@ -1,0 +1,39 @@
+---
+import {Icon} from "astro-icon/components"
+---
+
+<style>
+  a {
+    @apply text-gray-800 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-300;
+  }
+</style>
+
+<address class="col-content flex gap-x-4 py-3 justify-end items-center">
+  <a href=""><Icon name="line-md:phone-call-twotone" /> <span class="max-md:hidden">555-555-5555</span><span class="md:hidden">Call</span></a>
+  <a href=""><Icon name="line-md:email" /> <span class="max-md:hidden">contact@kyrasolutions.com</span><span class="md:hidden">Email</span></a>
+  <a href="" class="md:ml-auto">
+    <Icon name="line-md:map-marker-twotone" />
+    <span class="max-md:hidden">1234 Elm St.</span><span class="md:hidden">Office</span>
+  </a>
+  <div class="flex items-center">
+    <a href="">
+      <Icon name="mdi:facebook" alt="Kyra Solutions on Facebook" />
+    </a>
+    <a href="">
+      <Icon name="mdi:linkedin" alt="Kyra Solutions on LinkedIn" />
+    </a>
+    <a href="">
+      <Icon name="mdi:glassdoor" alt="Kyra Solutions on Glassdoor" />
+    </a>
+  </div>
+</address>
+
+<style>
+  div,
+  a {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    @apply transition-colors;
+  }
+</style>

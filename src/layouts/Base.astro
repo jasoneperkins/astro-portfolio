@@ -15,7 +15,7 @@ const {title, description, coverImage, class: classMain} = Astro.props
 <html lang="en" data-theme={theme}>
   <BaseHead {title} {description} {coverImage} />
   <body class="grid grid-rows-[auto_1fr_auto] min-h-screen font-display">
-    <PageHeader />
+    <PageHeader {title} />
     <main class={classMain}>
       <slot />
     </main>
