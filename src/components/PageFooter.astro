@@ -1,7 +1,84 @@
 ---
+import {Image} from "astro:assets"
+import {Icon} from "astro-icon/components"
 
+// import kyraSolutions from "@images/kyra-solutions.png"
+
+const currentYear = new Date().getFullYear()
+const {class: footerClass} = Astro.props
 ---
 
-<footer class="split">
-  <p>© 2025, Built with Astro</p>
+<style>
+  footer {
+    background-image: url(/assets/images/footer.png);
+  }
+  /* h2 {
+    @apply text-lg;
+  } */
+</style>
+
+<footer class="md:sticky bottom-0 -z-10 split bg-gray-50 dark:bg-gray-900">
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 py-10">
+    <div class="grid gap-y-4">
+      <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <!-- <Image src={kyraSolutions} alt="Kyra Solutions Logo" class="h-18 w-auto dark:brightness-50 dark:grayscale dark:invert" /> -->
+      </a>
+      <p>Kyra Solutions delivers innovative software solutions for government agencies seeking efficiency and growth.</p>
+      <div class="flex items-center gap-x-4">
+        <a href="">
+          <Icon name="mdi:facebook" alt="Kyra Solutions on Facebook" class="size-6" />
+        </a>
+        <a href="">
+          <Icon name="mdi:linkedin" alt="Kyra Solutions on LinkedIn" class="size-6" />
+        </a>
+        <a href="">
+          <Icon name="mdi:glassdoor" alt="Kyra Solutions on Glassdoor" class="size-6" />
+        </a>
+      </div>
+    </div>
+    <nav>
+      <h2>Our Solutions</h2>
+      <ul class="leading-tight small space-y-3">
+        <li><a href="/solutions/">Professional/Occupational Licensing</a></li>
+        <li><a href="/solutions/">Health & Human Services (HHS)</a></li>
+        <li><a href="/solutions/">Environmental Protection & Natural Resource Management</a></li>
+        <li><a href="/solutions/">Education Financing</a></li>
+      </ul>
+    </nav>
+    <nav>
+      <h2>Quick Links</h2>
+      <ul class="leading-tight small space-y-3">
+        <li><a href="/">Home</a></li>
+        <li><a href="http://">About Us</a></li>
+        <li><a href="http://">Case Studies</a></li>
+        <li><a href="/blog">Blog</a></li>
+      </ul>
+    </nav>
+    <div>
+      <p>Join our subscribers list to get the latest news and special offers.</p>
+      <form class="max-w-sm mt-4 mx-auto">
+        <div class="relative z-0 w-full mb-2 group">
+          <input
+            type="email"
+            name="floating_email"
+            id="floating_email"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            placeholder=" "
+            required
+          />
+          <label
+            for="floating_email"
+            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+            Email Address
+          </label>
+        </div>
+        <p id="helper-text-explanation" class="text-sm text-gray-500 dark:text-gray-400">
+          We'll never share your details. Read our <a href="#">Privacy Policy</a>.
+        </p>
+      </form>
+    </div>
+  </div>
+  <div class="bg-gray-100 dark:bg-gray-800 py-4">
+    <p class="text-center text-sm text-gray-500 dark:text-gray-400">&copy; {currentYear} Kyra Solutions. All rights reserved.</p>
+  </div>
 </footer>

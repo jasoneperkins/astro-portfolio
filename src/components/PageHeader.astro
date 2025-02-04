@@ -4,7 +4,20 @@ import HeaderNavigation from "./HeaderNavigation.astro"
 const title = "Jason E Perkins, Web Developer"
 ---
 
-<header class="grid split">
+<header class="grid split sticky top-0">
   <p>{title}</p>
   <HeaderNavigation />
 </header>
+<hgroup class="grid split">
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam omnis aliquid deserunt cupiditate possimus amet accusantium, eum rem! Vitae alias
+    laudantium debitis. Assumenda cum totam accusantium natus officiis. Atque reiciendis laudantium nihil quasi animi quisquam nostrum rem aliquid
+    quae impedit ratione, molestias fugiat natus eligendi beatae. Possimus neque blanditiis placeat?
+  </p>
+</hgroup>
+
+<style>
+  header {
+    container-type: scroll-state;
+  }
+</style>

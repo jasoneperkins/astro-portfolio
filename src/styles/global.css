@@ -39,6 +39,49 @@ body {
   grid-template-rows: min-content auto min-content;
 }
 
+/* Base */
+
+/* colors */
+
+main {
+  background-color: light-dark(var(--color-gray-50), var(--color-gray-900));
+}
+
+/* Components */
+
+/* buttons */
+
+button,
+.btn {
+  @apply justify-self-start flex gap-x-1 items-center py-3 px-6 rounded transition duration-200;
+  @apply leading-snug font-medium text-14;
+  @apply bg-blue-800 dark:bg-cyan-300 text-white dark:text-blue-900 shadow-lg shadow-blue-800/50;
+  @apply hover:no-underline focus:no-underline hover:bg-blue-900 focus:bg-blue-900 dark:hover:bg-cyan-500 dark:focus:bg-cyan-500;
+
+  &.btn-blue-cyan {
+    @apply bg-gradient-to-r from-[#234FBE] to-cyan-600 shadow-cyan-800/50;
+    @apply hover:bg-gradient-to-l focus:bg-gradient-to-l;
+  }
+
+  &.btn-transparent {
+    @apply bg-transparent shadow-none;
+    @apply text-gray-800 dark:text-gray-200;
+    @apply hover:outline-2 hover:outline-blue-500/50 hover:backdrop-blur-md hover:bg-white/30 focus:outline-2 focus:outline-blue-500/50 focus:backdrop-blur-md focus:bg-white/20;
+  }
+
+  &.btn-sm {
+    @apply py-1.5 px-3;
+  }
+
+  &.btn-0 {
+    @apply p-0;
+  }
+}
+
+/* Layouts */
+
+/* grid */
+
 main.split>*,
 :not(main).split {
   @apply grid;

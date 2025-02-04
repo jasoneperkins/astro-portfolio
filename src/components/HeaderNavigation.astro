@@ -4,15 +4,22 @@ import ThemeSwitcher from "./ThemeSwitcher.astro"
 
 <nav aria-label="Main Navigation" class="flex justify-between items-center gap-4 py-4">
   <a href="/" aria-current="page" class="text-4xl font-bold">Logo</a>
-  <ul class="flex justify-between items-center basis-md gap-1">
-    <li><a href="/">Home</a></li>
-    <li><a href="/">Shop</a></li>
-    <li><a href="/">Space Bears</a></li>
-    <li><a href="/">Mars Cars</a></li>
-    <li><a href="/">Contact</a></li>
+  <ul class="hidden md:flex justify-between items-center basis-sm shrink gap-1">
+    <li><a href="/" class="btn btn-sm btn-transparent">Home</a></li>
+    <li><a href="/" class="btn btn-sm btn-transparent">Shop</a></li>
+    <li><a href="/" class="btn btn-sm btn-transparent">Space Bears</a></li>
+    <li><a href="/" class="btn btn-sm btn-transparent">Mars Cars</a></li>
   </ul>
-  <div class="flex gap-x-4 items-center">
+  <div class="flex gap-x-2 items-center">
     <ThemeSwitcher />
-    <a href="/" aria-current="page">Contact Us</a>
+    <a href="/" class="btn whitespace-nowrap">Contact Us</a>
   </div>
 </nav>
+
+<style>
+  nav {
+    @container scroll-state(stuck: top) {
+      background-color: white;
+    }
+  }
+</style>
