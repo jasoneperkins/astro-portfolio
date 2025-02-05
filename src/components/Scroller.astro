@@ -1,0 +1,9 @@
+---
+import "@styles/components/scroller.css"
+
+const {class: divClass} = Astro.props
+---
+
+<div class:list={["wrapper", divClass]}>
+  <slot />
+</div>

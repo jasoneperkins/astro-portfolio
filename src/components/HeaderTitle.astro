@@ -9,12 +9,12 @@ const {title} = Astro.props
 <style>
   hgroup {
     --position-truncated-breadcrumbs: relative;
-    --color-link-breadcrumbs: light-dark(black, white);
+    --color-link-breadcrumbs: light-dark(var(--color-gray-50), var(--color-gray-600));
     --spacing-vertical-separator-breadcrumbs: 1rem;
   }
 
   svg {
-    stroke: light-dark(black, white);
+    stroke: light-dark(var(--color-gray-50), var(--color-gray-600));
   }
 </style>
 
@@ -29,7 +29,7 @@ const {title} = Astro.props
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      stroke="black"
+      stroke="light-dark(var(--color-gray-50), var(--color-gray-600))"
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round">

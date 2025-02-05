@@ -2,7 +2,9 @@
 import HeaderContact from "./HeaderContact.astro"
 import HeaderNavigation from "./HeaderNavigation.astro"
 import HeaderTitle from "./HeaderTitle.astro"
+import HeaderHero from "./HeaderHero.astro"
 
+const homePage = Astro.url.pathname === "/"
 const {title, coverImage = "/assets/images/blog-hero.webp"} = Astro.props
 const backgroundImage = `url(${coverImage})`
 ---
@@ -10,11 +12,16 @@ const backgroundImage = `url(${coverImage})`
 <style define:vars={{backgroundImage}}>
   header {
     background-image: var(--backgroundImage);
+    border-image: fill 1 linear-gradient(to bottom, --alpha(var(--color-white) / 80%) 30%, --alpha(var(--color-white) / 70%) 100%);
+  }
+
+  :root[data-theme="dark"] header {
+    border-image: fill 1 linear-gradient(to bottom, --alpha(var(--color-gray-900) / 80%) 30%, --alpha(var(--color-gray-900) / 70%) 100%);
   }
 </style>
 
 <header class="grid split bg-cover bg-center overlay-gray">
   <HeaderContact />
   <HeaderNavigation />
-  <HeaderTitle {title} />
+  {homePage ? <HeaderHero /> : <HeaderTitle {title} />}
 </header>

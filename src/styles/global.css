@@ -101,10 +101,6 @@ html {
   font-size: 18px;
 }
 
-body {
-  font-family: "Outfit", sans-serif;
-}
-
 h1 {
   @apply leading-none font-bold;
   /* font-size: 2.986rem; */
@@ -275,5 +271,25 @@ main.aside,
 
   aside {
     @apply max-lg:mt-8 lg:col-[center_/_content-end] lg:row-[1_/_100];
+  }
+}
+
+/* sections */
+
+section,
+main>div {
+  @apply relative overflow-x-clip bg-cover bg-center bg-no-repeat;
+  padding-block: clamp(3rem, 1.8444rem + 4.9307vw, 5rem);
+}
+
+aside section {
+  @apply pt-0;
+
+  &:not(:last-of-type) {
+    @apply pb-10 mb-10 border-b;
+  }
+
+  &:last-of-type {
+    @apply pb-0;
   }
 }

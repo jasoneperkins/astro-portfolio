@@ -1,53 +1,242 @@
 ---
 import Layout from "@layouts/Base.astro"
+import {Image} from "astro:assets"
+import {Icon} from "astro-icon/components"
+import {getCollection, getEntry} from "astro:content"
 
-import astroLogo from "@icons/astro.svg"
-import background from "@icons/background.svg"
+import ItemCard from "@components/ItemCard.astro"
+import ContactForm from "@components/ContactForm.astro"
+import DotsGrid from "@components/DotsGrid.astro"
+import Scroller from "@components/Scroller.astro"
 
-const title = "Homepage"
-const description = "Welcome to the Astro Basics homepage"
-const coverImage = "@images/business-integrity.webp"
+// Partners
+import salesforceConsultingPartner from "@assets/images/salesforce-consulting-parter.png"
+import gsaContractHolder from "@assets/images/gsa-contract-holder.png"
+import mulesoft from "@assets/images/mulesoft.png"
+import floridaStateTermContractHolder from "@assets/images/florida-state-term-contract-holder.png"
+
+import additional01 from "@assets/images/additional-01.jpg"
+import additional02 from "@assets/images/additional-03.jpg"
+
+// const {data: regulations} = await getEntry("solutionCategories", "cm6833zn97et207n4w8lcr287")
+// const {data: engagement} = await getEntry("solutionCategories", "cm68p3feocij707lrwipvfrr3")
+// const {data: additional} = await getEntry("solutionCategories", "cm69or7xj0pp607k4e07nd7t7")
+
+const title = "Home"
+const coverImage = "../assets/images/home-hero.webp"
 ---
 
-<Layout {title} {description} {coverImage} class="split">
-  <section style="overflow:visible">
-    <!-- <img id="background" src={background.src} alt="" fetchpriority="high" /> -->
-    <a href="https://www.jasoneperkins.com/astro/corporate"><img src={astroLogo.src} width="115" height="48" alt="Astro Homepage" /></a>
-    <h1>
-      To get started, open the <code>src/pages</code> directory in your project.
-    </h1>
+<Layout {title} {coverImage} class="split">
+  <!-- Expertise -->
+  <section aria-labelledby="expertise-label">
+    <DotsGrid color="darkcyan" bottom="120" left="-50" height="250" width="300" />
+    <hgroup class="mx-auto text-center">
+      <h2 id="expertise-label">Expertise</h2>
+    </hgroup>
+    <p class="mb-6 mx-auto max-w-prose text-center">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias provident in corporis. Necessitatibus perspiciatis quia dolores in aperiam
+      earum qui!
+    </p>
+    <ul class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      {
+        [
+          {
+            title: "Licensing",
+            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos veritatis doloribus corporis",
+            icon: {
+              name: "mdi:license",
+              class: "text-blue-800",
+              classDiv: "rounded-full p-3 bg-blue-100",
+            },
+          },
+          {
+            title: "Human Services",
+            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos veritatis doloribus corporis",
+            icon: {
+              name: "mdi:human-male-board-poll",
+              class: "text-red-800",
+              classDiv: "rounded-full p-3 bg-red-100",
+            },
+          },
+          {
+            title: "Environment",
+            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos veritatis doloribus corporis",
+            icon: {
+              name: "mdi:environment",
+              class: "text-green-800",
+              classDiv: "rounded-full p-3 bg-green-100",
+            },
+          },
+          {
+            title: "Education",
+            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos veritatis doloribus corporis",
+            icon: {
+              name: "mdi:book-education",
+              class: "text-yellow-800",
+              classDiv: "rounded-full p-3 bg-yellow-100",
+            },
+          },
+        ].map(item => <ItemCard {...item} class="shadow-xl dark:shadow-gray-900 bg-white dark:bg-gray-800" />)
+      }
+    </ul>
   </section>
-  <section id="links" class="wide">
-    <a class="button" href="/astro/corporate">Read our docs</a>
-    <a href="/astro/corporate/">Join our Discord</a>
-  </section>
-  <section>
-    <h2>Lorem ipsum dolor sit.</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus quas exercitationem iure, itaque a excepturi soluta commodi et id beatae? Autem
-      ratione id quaerat perspiciatis ea iure natus eaque eligendi laudantium qui placeat dolorum illo ipsa amet nostrum, incidunt, possimus
-      veritatis? Provident quisquam sed, laudantium iure esse ullam similique quas.
-    </p>
-    <p>
-      Illum eveniet rem accusantium hic, quidem laudantium, excepturi magni provident quo voluptatibus nam obcaecati laboriosam adipisci maxime
-      repellat ex dolorem dolorum consectetur tempora possimus libero odit eligendi dolore. Ab voluptates possimus, corrupti temporibus vel
-      accusantium modi et recusandae fugit provident eligendi. Provident magnam possimus fuga repellat ea, nostrum odio quasi.
-    </p>
-    <p>
-      Beatae incidunt magnam, animi inventore nihil officia explicabo ea nam nobis deleniti eos omnis, cupiditate earum obcaecati dolore dolor
-      accusamus laboriosam quidem necessitatibus temporibus numquam, repellat id aut! At similique harum autem maxime minima? Qui nostrum fuga laborum
-      vero obcaecati officia ullam possimus provident repellat illo, animi cum deleniti! Sequi?
-    </p>
-    <p>
-      Blanditiis, ea ullam harum porro labore nesciunt sequi dolores voluptatum ducimus quisquam mollitia ipsam sunt similique quos nostrum modi
-      praesentium debitis, nemo corporis illum? Voluptatibus aspernatur tempora velit possimus aliquam sit, odio nesciunt minima assumenda ullam alias
-      eaque excepturi, pariatur obcaecati non quam saepe! Eaque debitis rerum reiciendis fuga iure!
-    </p>
-  </section>
-</Layout>
 
-<style>
-  section {
-    padding-block: 5rem;
-  }
-</style>
+  <!-- Engagement -->
+  <!-- <section aria-labelledby="engagement-label" class="split-40 wide bg-alt">
+    <div class="half self-start lg:sticky lg:top-4">
+      <hgroup>
+        <p>{engagement.tagline}</p>
+        <h2 id="engagement-label">{engagement.title}</h2>
+      </hgroup>
+      <Fragment set:html={engagement.summary.html} />
+      <ul class="mt-6 space-y-2 columns-2 text-left">
+        <li class="flex items-start space-x-1 rtl:space-x-reverse">
+          <Icon name="mdi:check-bold" class="flex-none mt-1 size-4 text-cyan-600 dark:text-cyan-300" />
+          <span>Business Consultation</span>
+        </li>
+        <li class="flex items-start space-x-1 rtl:space-x-reverse">
+          <Icon name="mdi:check-bold" class="flex-none mt-1 size-4 text-cyan-600 dark:text-cyan-300" />
+          <span>Lorem Ipsum Dolor</span>
+        </li>
+        <li class="flex items-start space-x-1 rtl:space-x-reverse">
+          <Icon name="mdi:check-bold" class="flex-none mt-1 size-4 text-cyan-600 dark:text-cyan-300" />
+          <span>Sit Amet Consectetur</span>
+        </li>
+        <li class="flex items-start space-x-1 rtl:space-x-reverse">
+          <Icon name="mdi:check-bold" class="flex-none mt-1 size-4 text-cyan-600 dark:text-cyan-300" />
+          <span>Adipisicing Laboriosam</span>
+        </li>
+        <li class="flex items-start space-x-1 rtl:space-x-reverse">
+          <Icon name="mdi:check-bold" class="flex-none mt-1 size-4 text-cyan-600 dark:text-cyan-300" />
+          <span>Elesmond Tempor</span>
+        </li>
+        <li class="flex items-start space-x-1 rtl:space-x-reverse">
+          <Icon name="mdi:check-bold" class="flex-none mt-1 size-4 text-cyan-600 dark:text-cyan-300" />
+          <span>Delora Magnum</span>
+        </li>
+      </ul>
+      <a href="http://google.com" class="btn mt-6">Case Studies</a>
+    </div>
+    <ul class="half grid gap-4 md:grid-cols-2">
+      {
+        engagement.solutions.map(({title, coverImage, tagline, slug}) => (
+          <li class="grid relative lg:even:top-8 intersect:motion-preset-slide-down motion-delay-200">
+            <ItemCard
+              {title}
+              {coverImage}
+              description={tagline}
+              link={{url: `/solutions/${engagement.slug}/${slug}`, class: "btn"}}
+              class="overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800"
+              footerClass="mt-auto"
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </section> -->
+
+  <!-- Partnerships -->
+  <!-- <section aria-labelledby="partnership-label" class="overlay-blue-cyan bg-fixed bg-[url(/assets/images/home-partnerships.webp)] text-white">
+    <hgroup class="flex flex-col items-center">
+      <p id="partnership-label" class="before:content-none text-center">Successful Projects Through Successful Partnerships</p>
+      <h2 class="max-w-3xl">Partnerships</h2>
+    </hgroup>
+    <Scroller class="mt-8">
+      <Image src={salesforceConsultingPartner} alt="Salesforce Consulting Partner" class="item item1 h-16 w-auto" />
+      <Image src={gsaContractHolder} alt="GSA Contract Holder" class="item item2 h-16 w-auto" />
+      <Image src={mulesoft} alt="Mulesoft" class="item item3 h-16 w-auto" />
+      <Image src={floridaStateTermContractHolder} alt="Florida State Term Contract Holder" class="item item4 h-16 w-auto" />
+    </Scroller>
+  </section> -->
+
+  <!-- Regulatory Programs -->
+  <!-- <section aria-labelledby="regulatory-label" class="split-40">
+    <hgroup class="half min-w-72">
+      <p>{regulations.tagline}</p>
+      <h2 id="regulatory-label" class="mb-0">{regulations.title}</h2>
+    </hgroup>
+    <div set:html={regulations.summary.html} class="half" />
+    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+      {
+        regulations.solutions.map(({title, coverImage, tagline, slug}) => (
+          <li class="grid relative intersect:motion-preset-slide-down motion-delay-200">
+            <ItemCard
+              {title}
+              {coverImage}
+              description={tagline}
+              link={{url: `/solutions/${regulations.slug}/${slug}`, class: "btn"}}
+              footerClass="mt-auto"
+              class="overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800"
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </section> -->
+
+  <!-- Contact Us -->
+  <section aria-labelledby="contact-label" class="wide bg-alt">
+    <DotsGrid color="darkcyan" top="-80" right="80" height="200" width="250" />
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_6rem_1fr] grid-rows-[auto_fit-content_auto]">
+      <img
+        src="https://bizix.premiumthemes.in/wp-content/uploads/2020/02/home1-contact-pic.jpg"
+        alt=""
+        srcset=""
+        class="max-lg:hidden row-start-1 row-end-4 col-start-1 col-end-3"
+      />
+      <div
+        class="bg-white dark:bg-gray-900 shadow p-8 md:p-16 z-10 max-w-4xl mx-auto row-start-2 row-end-3 col-start-2 col-end-4 intersect-once intersect:motion-preset-slide-left">
+        <h2 id="contact-label" class="text-pretty">Contact Us Today and Get a Free Online Quote Now!</h2>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Services -->
+  <!-- <section aria-labelledby="additional-label" class="bg-[url('../src/assets/images/bg-triangles.png')]">
+    <div class="half">
+      <hgroup>
+        <p>{additional.tagline}</p>
+        <h2 id="additional-label">{additional.title}</h2>
+      </hgroup>
+      <Fragment set:html={additional.summary.html} />
+      <hr class="my-6 bg-gray text-gray" />
+      <ul class="space-y-4">
+        {
+          additional.solutions.map(({title, icon, tagline, slug}) => (
+            <li class="grid relative intersect:motion-preset-slide-down motion-delay-200">
+              <ItemCard
+                {title}
+                description={tagline}
+                icon={{name: {icon}, class: "size-16"}}
+                link={{url: `/solutions/${additional.slug}/${slug}`, class: "btn btn-0 btn-transparent"}}
+                class="!flex overflow-hidden !p-0 bg-transparent gap-x-4"
+                heroClass="!p-0"
+                bodyClass="p-0"
+                footerClass="mt-auto"
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="half max-lg:hidden grid grid-cols-[auto_150px_auto] grid-rows-[auto_350px_auto]">
+      <Image src={additional01} alt="" class="z-0 row-start-1 row-end-3 col-start-1 col-end-3 inline-grid shadow-2xl" />
+      <Image src={additional02} alt="" class="z-0 row-start-2 row-end-4 col-start-2 col-end-4 inline-grid shadow-2xl" />
+    </div>
+  </section> -->
+
+  <!-- Newsletter -->
+  <!-- <section aria-labelledby="newsletter-label" class="wide pt-0">
+    <Scroller>
+      <li><img src="https://smultron.software/content/uploads/2024/01/karcher.svg" alt="" srcset="" class="h-12" /></li>
+      <li><img src="https://smultron.software/content/uploads/2024/01/edisonda.svg" alt="" srcset="" class="h-12" /></li>
+      <li><img src="https://smultron.software/content/uploads/2024/01/dr-eryk.svg" alt="" srcset="" class="h-12" /></li>
+      <li><img src="https://smultron.software/content/uploads/2024/01/supermenu.svg" alt="" srcset="" class="h-12" /></li>
+      <li><img src="https://smultron.software/content/uploads/2024/01/uniwerystet-wroclawski.svg" alt="" srcset="" class="h-12" /></li>
+      <li><img src="https://smultron.software/content/uploads/2024/01/onet.svg" alt="" srcset="" class="h-12" /></li>
+      <li><img src="https://smultron.software/content/uploads/2024/01/yggdrasil.svg" alt="" srcset="" class="h-12" /></li>
+      <li><img src="https://smultron.software/content/uploads/2024/01/eit.svg" alt="" srcset="" class="h-12" /></li>
+    </Scroller>
+  </section> -->
+</Layout>

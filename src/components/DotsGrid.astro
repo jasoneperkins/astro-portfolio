@@ -1,0 +1,25 @@
+---
+import resolveConfig from "tailwindcss/resolveConfig"
+import tailwindConfig from "./tailwind.config.js"
+
+const classesDotsGrid = "overflow-x-hidden dots-grid absolute z-0"
+const {class: className, width = "300", height = "300", color = "blue", top, bottom, left, right, ...rest} = Astro.props
+---
+
+<div class:list={[classesDotsGrid, className]} {...rest}></div>
+
+<style define:vars={{top, bottom, left, right, width, height, color}}>
+  .dots-grid {
+    top: calc(var(--top) * 1px);
+    bottom: calc(var(--bottom) * 1px);
+    left: calc(var(--left) * 1px);
+    right: calc(var(--right) * 1px);
+    width: calc(var(--width) * 1px);
+    height: calc(var(--height) * 1px);
+    transform: translateY(7rem);
+    background-color: var(--color);
+    mask-image: url("/src/assets/images/dots.svg");
+    mask-size: 1rem;
+    -webkit-mask-size: 1rem;
+  }
+</style>
